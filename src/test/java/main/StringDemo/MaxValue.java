@@ -1,21 +1,38 @@
 package test.java.main.StringDemo;
 
-import java.util.HashMap;
+import java.util.Scanner;
 
 public class MaxValue 
-{
-	static String s = new String("geeksforgeeks");
-	static char[] ch = s.toCharArray();
-	public static void main(String[] args) 
+{	
+	public void maxValue(String s)
 	{
-		int count=0;
-		int max=-1;
-		for(int i=0; i<ch.length; i++)
+		int count=1;
+		int max=0;
+		char ch = ' ';
+		for(int i=0; i<s.length(); i++)
 		{
-			for(int j=1; j<ch.length; j++)
+			count=1;
+			for(int j=i+1; j<s.length(); j++)
 			{
-				
+				if(s.charAt(i)==s.charAt(j))
+				{
+					count++;
+				}
+			}
+			if(count>max)
+			{
+				max = count;
+				ch = s.charAt(i);
 			}
 		}
+		System.out.println(ch+":"+max);
+	}
+	public static void main(String[] args) 
+	{
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter a String::");
+		String s = sc.next();
+		MaxValue mx = new MaxValue();
+		mx.maxValue(s);
 	}
 }
